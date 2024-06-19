@@ -1,0 +1,22 @@
+@use "../../components/styles/colors";
+@use "../../components/styles/screen";
+
+.Home {
+  --padding: 40px;
+
+  @media screen and (max-width: screen.$mobile) {
+    --padding: 20px;
+  }
+
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 0px;
+
+  &__Content {
+    padding: var(--padding);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+}

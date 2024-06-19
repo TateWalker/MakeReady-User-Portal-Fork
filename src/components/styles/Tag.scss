@@ -1,0 +1,19 @@
+@use "colors";
+
+.Tag {
+  display: flex;
+  background: colors.$grey20;
+  color: colors.$black;
+  padding: 4px 10px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  user-select: none;
+  transition: all 0.2s ease;
+  text-transform: capitalize;
+
+  &:hover {
+    background: colors.$black;
+    color: colors.$white;
+  }
+}

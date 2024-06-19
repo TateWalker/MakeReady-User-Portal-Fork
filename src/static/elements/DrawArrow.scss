@@ -1,0 +1,19 @@
+@use "../../components/styles/colors";
+
+.DrawArrow {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &--purple {
+    svg path {
+      stroke: colors.$purple;
+    }
+  }
+
+  &--white {
+    svg path {
+      stroke: colors.$white;
+    }
+  }
+}

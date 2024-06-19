@@ -1,0 +1,69 @@
+@use "../../components/styles/colors";
+@use "../../components/styles/screen";
+
+.MyPlaylists {
+  display: flex;
+  flex-direction: column;
+
+  &__Wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    align-self: stretch;
+    flex: 1;
+  }
+
+  &__Header {
+    padding: 20px;
+    padding-top: 90px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 20px;
+    align-self: stretch;
+    background: linear-gradient(180deg, #161517 0%, #332f36 100%);
+
+    h2 {
+      font-size: 40px;
+      line-height: 1.4em;
+      letter-spacing: -0.02em;
+      font-weight: bold;
+      margin: 0;
+      color: colors.$white;
+    }
+  }
+
+  &__Body {
+    display: flex;
+    padding: 20px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    flex: 1;
+    align-self: stretch;
+    background: colors.$grey10;
+  }
+
+  &__Stats {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+  }
+
+  &__Stat {
+    display: flex;
+    gap: 10px;
+    color: rgba(colors.$white, 0.7);
+    font-size: 14px;
+    letter-spacing: 0;
+    font-weight: bold;
+    text-transform: uppercase;
+
+    span {
+      font-weight: bold;
+      color: colors.$white;
+    }
+  }
+}

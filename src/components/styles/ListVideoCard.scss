@@ -1,0 +1,24 @@
+@use "colors";
+
+.ListVideoCard {
+  display: flex;
+  align-items: center;
+  align-self: stretch;
+  background: colors.$grey5;
+
+  &:hover {
+    background: colors.$grey10;
+  }
+
+  &:active,
+  &--selected {
+    background: rgba(colors.$purple, 0.2) !important;
+  }
+
+  &:hover & {
+    opacity: 1;
+    & > :first-child {
+      opacity: 1;
+    }
+  }
+}

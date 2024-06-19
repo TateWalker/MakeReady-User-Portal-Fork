@@ -1,0 +1,82 @@
+@use "colors";
+
+.MyPlaylistList {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  align-self: stretch;
+  position: relative;
+
+  &__Title {
+    display: flex;
+    padding: 20px;
+    align-items: flex-start;
+    gap: 10px;
+    align-self: stretch;
+    border-bottom: 2px solid colors.$purple;
+    background: colors.$white;
+    text-transform: uppercase;
+    color: colors.$black;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    font-size: 14px;
+  }
+
+  &__Items {
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 auto;
+    width: 100%;
+  }
+
+  &__Item {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    padding: 10px 40px 10px 20px;
+    line-height: 30px;
+    font-size: 14px;
+    white-space: nowrap;
+    font-weight: bold;
+    color: colors.$black;
+    background: colors.$white;
+    transition: all 0.2s ease;
+    flex: 1;
+    cursor: pointer;
+
+    div {
+      display: flex;
+      flex-direction: row;
+      flex: 0 1 auto;
+      transition: all 0.2s ease;
+    }
+
+    span {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(colors.$black, 0.1);
+      flex: 0 0 30px;
+      padding: 4px;
+      line-height: 14px;
+      font-size: 14px;
+      border-radius: 4px;
+      font-weight: 400;
+      transition: all 0.2s ease;
+    }
+
+    &:hover {
+      background: colors.$black;
+      color: colors.$white;
+
+      div {
+        color: colors.$white;
+      }
+
+      span {
+        background: rgba(colors.$white, 0.2);
+        color: colors.$white;
+      }
+    }
+  }
+}

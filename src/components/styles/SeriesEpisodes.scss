@@ -1,0 +1,20 @@
+@use "colors";
+@use "screen";
+
+.SeriesEpisodes {
+  display: flex;
+  padding: 20px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 20px;
+  align-self: stretch;
+
+  &__List {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+    align-self: stretch;
+    overflow-y: scroll;
+  }
+}

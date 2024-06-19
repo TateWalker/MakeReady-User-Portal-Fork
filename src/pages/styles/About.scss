@@ -1,0 +1,303 @@
+@use "../../components/styles/colors";
+@use "../../components/styles/screen";
+
+.About {
+  --title-font-family: Anton, Open Sans, sans-serif;
+  --opening-font-size: 24px;
+  --content-max-width: 960px;
+  --content-padding: 60px;
+  --title-1-size: 8vh;
+  --title-2-size: 10vh;
+  --title-3-size: 20vh;
+  --title-description-size: 24px;
+  --title-left-display: flex;
+  --title-justify-content: center;
+  --who-flex-direction: row;
+  --person-border-right: 2px solid #{colors.$white};
+  --person-border-bottom: none;
+  --person-name-size: 40px;
+  --sss-info-size: 18px;
+  --box-font-size: 80px;
+  --values-flex-direction: row;
+
+  @media screen and (max-width: screen.$tablet) {
+    --content-padding: 40px;
+    --box-font-size: 60px;
+    --title-left-display: none;
+    --title-justify-content: flex-end;
+    --values-flex-direction: column;
+  }
+
+  @media screen and (max-width: screen.$mobile) {
+    --opening-font-size: 18px;
+    --content-padding: 20px;
+    --title-1-size: 5vh;
+    --title-2-size: 6vh;
+    --title-3-size: 15vh;
+    --title-description-size: 18px;
+    --who-flex-direction: column;
+    --person-border-right: none;
+    --person-border-bottom: 2px solid #{colors.$white};
+    --person-name-size: 30px;
+    --person-info-size: 16px;
+    --box-font-size: 40px;
+  }
+
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+
+  /**
+
+  Hero Section
+
+  */
+  &__Hero {
+    display: flex;
+    flex-direction: row;
+    position: relative;
+    background-image: url("../../static/images/About.png");
+    background-size: cover;
+    background-position: center center;
+    padding: calc(var(--nav-height, 70px) + var(--content-padding))
+      var(--content-padding) var(--content-padding) var(--content-padding);
+    min-height: 70vh;
+    gap: 40px;
+    user-select: none;
+
+    &--left {
+      display: var(--title-left-display);
+      flex-direction: column;
+      gap: 20px;
+      justify-content: center;
+      align-items: flex-start;
+      flex: 1;
+    }
+
+    &--right {
+      justify-content: var(--title-justify-content);
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      align-items: flex-start;
+      flex: 1;
+    }
+
+    &__Title {
+      display: flex;
+      flex-direction: column;
+      letter-spacing: -0.02em;
+      color: colors.$white;
+      justify-content: flex-end;
+
+      > div {
+        font-family: var(--title-font-family);
+        line-height: 0.95em;
+        text-transform: uppercase;
+        white-space: nowrap;
+
+        &:nth-child(1) {
+          font-size: var(--title-1-size);
+        }
+        &:nth-child(2) {
+          font-size: var(--title-2-size);
+        }
+        &:nth-child(3) {
+          font-size: var(--title-3-size);
+        }
+      }
+    }
+
+    &__Description {
+      font-size: var(--title-description-size);
+      line-height: 1.4em;
+      color: colors.$white;
+    }
+  }
+
+  &__Opening {
+    font-size: var(--opening-font-size);
+    line-height: 1.8em;
+  }
+
+  /**
+
+  How we do it
+
+  */
+  &__How {
+    padding: var(--content-padding);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 20px;
+    align-self: stretch;
+    color: rgba(colors.$black, 0.7);
+  }
+
+  &__Who {
+    display: flex;
+    flex-direction: var(--who-flex-direction);
+    gap: 0px;
+    border: 2px solid colors.$white;
+
+    &__Person {
+      display: flex;
+      flex-direction: column;
+      border-right: var(--person-border-right);
+      border-bottom: var(--person-border-bottom);
+      flex: 1;
+
+      &:last-child {
+        border: none;
+      }
+    }
+
+    &__Image {
+      width: 100%;
+      height: 100%;
+      background-color: colors.$purple;
+      background-position: center 40px;
+      background-size: 400px;
+      background-repeat: no-repeat;
+      height: 300px;
+    }
+
+    &__Info {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      padding: 40px;
+      color: colors.$white;
+      font-size: var(--person-info-size);
+      line-height: 1.8em;
+      flex: 1;
+
+      h2 {
+        font-size: var(--person-name-size);
+        line-height: 1em;
+        font-weight: bold;
+        letter-spacing: -0.02em;
+        margin: 0;
+      }
+
+      h3 {
+        font-size: 14px;
+        line-height: 20px;
+        color: colors.$purple;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+      }
+    }
+  }
+
+  &__Vision {
+    display: flex;
+    padding: var(--content-padding);
+    flex-direction: column;
+    align-items: center;
+    align-self: stretch;
+    background: colors.$white;
+    gap: 20px;
+  }
+
+  &__Values {
+    flex-direction: var(--values-flex-direction);
+    display: flex;
+    gap: 0;
+    border: 2px solid colors.$purple;
+
+    > div {
+      display: flex;
+      flex: 1;
+      flex-direction: column;
+      justify-content: flex-start;
+      padding: 40px;
+      gap: 20px;
+      font-size: 18px;
+      line-height: 1.8em;
+    }
+
+    &--left {
+      flex: 1;
+    }
+
+    &--right {
+      flex: 1;
+      background: colors.$black;
+      color: colors.$white;
+    }
+
+    &__Title {
+      font-family: Anton;
+      text-transform: uppercase;
+      font-size: 40px;
+      line-height: 1.4em;
+    }
+
+    &__Bullets {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    &__Bullet {
+      display: flex;
+      font-size: 16px;
+      line-height: 1.8em;
+      position: relative;
+      padding: 0 0 0 40px;
+
+      &:before {
+        content: "";
+        display: block;
+        position: absolute;
+        top: 10px;
+        left: 0px;
+        width: 12px;
+        height: 12px;
+        border: 4px solid colors.$purple;
+      }
+    }
+  }
+
+  &__Box {
+    display: flex;
+    flex-direction: column;
+    gap: 0px;
+    align-items: center;
+    justify-content: center;
+
+    &--row {
+      flex-direction: row;
+      width: 100%;
+    }
+
+    &__Line {
+      display: flex;
+      flex: 1;
+      height: 2px;
+      background: colors.$white;
+      width: 100%;
+    }
+
+    &__Title {
+      font-family: var(--title-font-family);
+      font-size: var(--box-font-size);
+      text-transform: uppercase;
+      line-height: 1em;
+      font-weight: bold;
+      color: colors.$black;
+      padding: 40px;
+      border: 2px solid colors.$purple;
+    }
+
+    &--white & {
+      &__Title {
+        color: colors.$white;
+        border-color: colors.$white;
+      }
+    }
+  }
+}

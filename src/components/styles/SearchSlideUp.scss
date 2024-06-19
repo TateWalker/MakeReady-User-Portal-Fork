@@ -1,0 +1,179 @@
+@use "colors";
+@use "screen";
+
+.SearchSlideUp {
+  --header-title-display: none;
+
+  @media screen and (max-width: screen.$mobile) {
+    --header-title-display: flex;
+  }
+
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  visibility: hidden;
+  opacity: 0;
+  transition: all 0.2s ease;
+  z-index: 99;
+
+  &__Header {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 90px 20px 20px 20px;
+    align-items: flex-start;
+    align-self: stretch;
+    background: colors.$black;
+    backdrop-filter: blur(20px);
+
+    &__Title {
+      display: var(--header-title-display, flex);
+      flex-direction: row;
+      gap: 10px;
+      align-items: center;
+      justify-content: stretch;
+      width: 100%;
+    }
+
+    h2 {
+      color: colors.$white;
+      display: flex;
+      flex: 1 1 auto;
+    }
+
+    .Button {
+      flex: 0 0 30px;
+      padding: 0;
+
+      svg path {
+        fill: colors.$white !important;
+      }
+    }
+  }
+
+  &__Results {
+    display: flex;
+    min-height: 800px;
+    padding: 20px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+    align-self: stretch;
+    background: colors.$white;
+  }
+
+  &__ResultTypes {
+    display: flex;
+    align-items: flex-start;
+    cursor: pointer;
+  }
+
+  &__ResultType {
+    display: flex;
+    gap: 10px;
+    color: colors.$black;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 20px;
+    white-space: nowrap;
+    padding: 4px 10px;
+
+    span {
+      display: flex;
+      color: rgba(colors.$black, 0.5);
+    }
+
+    &--selected {
+      background: colors.$black;
+      color: colors.$white;
+
+      span {
+        color: rgba(colors.$white, 0.7);
+      }
+    }
+  }
+
+  &__Results {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+    padding: 20px;
+    height: 100%;
+    align-self: stretch;
+    overflow-y: scroll;
+  }
+
+  &__Close {
+    position: absolute;
+    top: calc(50% + (var(--nav-height, 70px) / 2) - 20px);
+    right: 30px;
+    cursor: pointer;
+    z-index: 99;
+
+    svg path {
+      fill: rgba(colors.$white, 0.5);
+      transition: all 0.2s ease;
+    }
+
+    &:hover {
+      svg path {
+        fill: colors.$white;
+      }
+    }
+  }
+
+  &__ResultsList {
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    gap: 4px;
+    padding: 0px;
+    height: 100%;
+    width: 100%;
+    overflow-y: scroll;
+  }
+
+  &--visible {
+    visibility: visible;
+    opacity: 1;
+  }
+
+  &__SeriesView {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 20px;
+
+    .SeriesCard {
+      min-width: 400px;
+      max-width: 640px;
+      min-height: 400px;
+      cursor: pointer;
+
+      // Stupid border throws off background size calculations
+      &:after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border: 4px solid transparent;
+        transition: all 0.2s ease;
+      }
+
+      &:hover {
+        &:after {
+          border-color: colors.$purple;
+        }
+      }
+    }
+  }
+}

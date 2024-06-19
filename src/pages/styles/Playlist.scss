@@ -1,0 +1,112 @@
+@use "../../components/styles/colors";
+@use "../../components/styles/screen";
+
+.Playlist {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+
+  &--open {
+    overflow: hidden;
+  }
+
+  &__Header {
+    padding: 20px;
+    padding-top: 90px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+    align-items: flex-start;
+    gap: 20px;
+    align-self: stretch;
+    background: linear-gradient(180deg, #161517 0%, #332f36 100%);
+  }
+
+  &__Videos {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    flex: 1;
+  }
+
+  &__Top {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    align-self: stretch;
+    flex: 1 0 0;
+    color: colors.$white;
+
+    h2 {
+      display: flex;
+      flex: 1;
+      font-size: 40px;
+      line-height: 1em;
+      font-weight: bold;
+    }
+  }
+
+  &__Back {
+    display: flex;
+    flex: 0 0 auto;
+    cursor: pointer;
+
+    svg path {
+      fill: colors.$white;
+    }
+
+    &:hover {
+      svg path {
+        fill: colors.$purple;
+      }
+    }
+  }
+
+  &__Bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    align-self: stretch;
+  }
+
+  &__Content {
+    display: flex;
+    padding: 20px;
+    flex-direction: column;
+    position: relative;
+    align-items: flex-start;
+    gap: 10px;
+    flex: 1 0 0;
+    align-self: stretch;
+  }
+
+  &__Buttons {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+  }
+
+  &__Stats {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+  }
+
+  &__Stat {
+    display: flex;
+    gap: 10px;
+    color: rgba(colors.$white, 0.7);
+    font-size: 14px;
+    letter-spacing: 0;
+    font-weight: bold;
+    text-transform: uppercase;
+
+    span {
+      font-weight: bold;
+      color: colors.$white;
+    }
+  }
+}

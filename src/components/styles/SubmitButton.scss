@@ -1,0 +1,31 @@
+@use "colors";
+@use "screen";
+
+.SubmitButton {
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  transition: all 0.2s ease;
+  flex: 1 1 auto;
+  gap: 10px;
+
+  input {
+    display: flex;
+    outline: none;
+    border: none;
+    background: colors.$purple;
+    color: colors.$white;
+    font-size: 14px;
+    line-height: 20px;
+    padding: 20px;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    transition: all 0.2s ease;
+    width: 100%;
+  }
+
+  &:hover {
+    background: colors.$black;
+  }
+}

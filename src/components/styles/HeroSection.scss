@@ -1,0 +1,173 @@
+@use "colors";
+@use "screen";
+
+.HeroSection {
+  --vh: 70vh;
+  --arrow-display: flex;
+  --hero-padding: 80px;
+  --dot-padding: 80px;
+  --item-flex-direction: column;
+  --item-content-flex: 0;
+  --item-buttons-width: max-content;
+  --title-size: calc(var(--vh) * 0.2);
+  --description-size: 24px;
+  --item-max-width: 50%;
+
+  @media screen and (max-width: screen.$mobile) {
+    --arrow-display: none;
+    --hero-padding: 20px;
+    --item-content-flex: 0;
+    --item-buttons-width: 100%;
+    // --title-size: 60px;
+    --title-size: calc(var(--vh) * 0.1);
+    --dot-padding: 50px;
+    --description-size: 18px;
+    --item-max-width: 100%;
+  }
+
+  display: flex;
+  height: var(--vh);
+  min-height: 700px;
+  padding: 0px;
+  position: relative;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 20px;
+  align-self: stretch;
+  background-size: cover;
+  background-position: center center;
+
+  &__Items {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: colors.$black;
+  }
+
+  &__Item {
+    position: absolute;
+    display: flex;
+    flex-direction: var(--item-flex-direction);
+    flex: 1 1 auto;
+    padding: calc(var(--nav-height, 70px) + var(--hero-padding))
+      var(--hero-padding) var(--dot-padding) var(--hero-padding);
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    z-index: 1;
+    gap: 20px;
+    color: colors.$white;
+    transition: all 0.5s ease;
+    background-position: center center;
+    background-size: cover;
+
+    &--active {
+      opacity: 1;
+      z-index: 2;
+    }
+  }
+
+  &__Content {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    justify-content: flex-end;
+    flex: var(--item-content-flex);
+  }
+
+  &__Title {
+    display: flex;
+    font-family: "Anton", sans-serif;
+    font-weight: bold;
+    font-size: var(--title-size);
+    line-height: 1em;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    flex: 1;
+    justify-content: flex-start;
+    align-items: flex-end;
+    max-width: var(--item-max-width);
+    user-select: none;
+  }
+
+  &__Description {
+    font-size: var(--description-size);
+    line-height: 1.4em;
+    font-weight: 500;
+  }
+
+  &__Buttons {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    flex: 0 1 auto;
+    align-items: flex-start;
+    justify-content: flex-start;
+    width: var(--item-buttons-width);
+  }
+
+  &__Dots {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    z-index: 3;
+  }
+
+  &__Dot {
+    display: block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: rgba(colors.$white, 0.2);
+    transition: all 0.2s ease;
+
+    &--active {
+      background: colors.$white;
+    }
+  }
+
+  &__Arrow {
+    display: var(--arrow-display, flex);
+    position: absolute;
+    align-items: center;
+    justify-content: center;
+    width: var(--hero-padding);
+    // Cheap trick to prevent the arrow from overlapping the CTAs
+    height: calc(100% - 200px);
+    top: 100px;
+    z-index: 3;
+    cursor: pointer;
+    user-select: none;
+    transition: all 0.2s ease;
+
+    svg path {
+      fill: rgba(colors.$white, 0.5);
+      transition: all 0.2s ease;
+    }
+
+    &:hover {
+      svg path {
+        fill: colors.$white;
+      }
+    }
+
+    &--left {
+      left: 0;
+    }
+
+    &--right {
+      right: 0;
+    }
+  }
+}

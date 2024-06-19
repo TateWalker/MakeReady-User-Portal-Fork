@@ -1,0 +1,26 @@
+.Icon {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+
+  &__Image {
+    width: auto;
+    height: 100%;
+  }
+
+  &--circle {
+    display: inline-block;
+    position: relative;
+    overflow: hidden;
+    border-radius: 50%;
+  }
+
+  & svg {
+    position: inherit !important;
+    top: 0px !important;
+    left: 0px !important;
+  }
+}

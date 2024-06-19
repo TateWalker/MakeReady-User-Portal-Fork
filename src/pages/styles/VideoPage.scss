@@ -1,0 +1,200 @@
+@use "../../components/styles/colors";
+@use "../../components/styles/screen";
+
+.VideoPage {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  align-items: flex-start;
+  background-color: colors.$white;
+  padding: 0px;
+  z-index: 2;
+
+  // Responsive variables
+  --content-flex-direction: row;
+  --series-flex: 1;
+
+  /**
+  Mobile styles
+  */
+  @media screen and (max-width: screen.$mobile) {
+    --content-flex-direction: column;
+    --series-flex: 1;
+  }
+
+  &__VideoDetails {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px;
+    background: colors.$grey5;
+    flex: 1 1 auto;
+
+    h2 {
+      display: flex;
+      margin: 0;
+      letter-spacing: -0.02em;
+    }
+
+    &__Button {
+      color: colors.$black;
+      font-size: 14px;
+      line-height: 14px; /* 116.667% */
+      letter-spacing: -0.02em;
+      font-weight: bold;
+      cursor: pointer;
+
+      &:hover {
+        color: colors.$purple;
+      }
+    }
+  }
+
+  &__Content {
+    flex-direction: var(--content-flex-direction, column);
+    padding: 0px;
+    display: flex;
+    gap: 0px;
+    width: 100%;
+    flex: 1 0 auto;
+  }
+
+  &__Tags {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 4px;
+  }
+
+  &__TitleTop {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  &__TitleTopRow {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    .Button {
+      flex: 0 0 0;
+    }
+  }
+
+  &__Episodes {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+  }
+
+  &__Stream {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-self: stretch;
+    background: colors.$black;
+    padding: 0;
+
+    &__Container {
+      // position: relative;
+      min-height: 500px;
+      padding-top: 70px;
+      width: 100%;
+
+      > div {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+      }
+    }
+
+    &__Ended {
+      position: relative;
+      flex-direction: column;
+      min-height: 500px;
+      align-content: center;
+      justify-content: center;
+      padding: 20px;
+      gap: 20px;
+      h2 {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        flex-direction: row;
+        color: colors.$white;
+      }
+      &__VideoText {
+        color: colors.$purple;
+        text-transform: capitalize;
+      }
+    }
+  }
+
+  &__Series {
+    display: flex;
+    padding: 20px;
+    flex-direction: column;
+    gap: 20px;
+    flex: var(--series-flex);
+  }
+
+  h2 {
+    font-size: 18px;
+    line-height: 20px;
+    font-weight: bold;
+  }
+
+  &__Controls {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 20px;
+
+    &__Buttons {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+
+    &__Button {
+      display: flex;
+      flex-direction: row;
+      gap: 10px;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+
+  &__List {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    max-height: 720px;
+    gap: 4px;
+    align-self: stretch;
+    overflow-y: scroll;
+  }
+
+  &__Spinner {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    padding-top: 70px;
+    min-height: 500px;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    background-color: colors.$black;
+    z-index: 1000;
+  }
+}

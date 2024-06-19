@@ -1,0 +1,200 @@
+@use "colors";
+@use "screen";
+
+.InputField {
+  --padding-left: 20px;
+  --search-font-size: 32px;
+
+  @media screen and (max-width: screen.$mobile) {
+    --search-font-size: 16px;
+  }
+
+  $root: &;
+  position: relative;
+  display: flex;
+  padding: 0px;
+  align-items: center;
+  gap: 10px;
+  align-self: stretch;
+  background: colors.$grey10;
+  transition: all 0.2s ease;
+  border: 2px solid transparent;
+
+  .IconBox {
+    position: absolute;
+    left: 15px;
+    top: calc(50% - 15px);
+    z-index: 1;
+  }
+
+  .Icon {
+    position: absolute;
+    left: 15px;
+    top: calc(50% - 12px);
+    z-index: 1;
+    svg path {
+      transition: all 0.2s ease;
+      fill: rgba(colors.$black, 0.5);
+    }
+  }
+
+  // The label
+  label {
+    display: block;
+    position: absolute;
+    top: calc(50% - 10px);
+    left: var(--padding-left, 20px);
+    width: calc(100% - var(--padding-left, 20px));
+    height: 20px;
+    z-index: 1;
+    color: rgba(colors.$black, 0.5);
+    opacity: 1;
+    font-size: 14px;
+    line-height: 20px;
+    font-weight: bold;
+    letter-spacing: -0.02em;
+    transition: all 0.2s ease;
+  }
+
+  input,
+  textarea {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    border: 0;
+    margin: 0;
+    padding: 24px 20px 16px var(--padding-left, 20px);
+    background: transparent;
+    outline: none;
+    z-index: 2;
+  }
+
+  &--focus {
+    background: colors.$grey5;
+    border: 2px solid colors.$purple;
+  }
+
+  // If there is an error
+  &--error {
+    border: 2px solid colors.$error;
+  }
+
+  // if the input has an inset-block-end:
+  &--icon {
+    --padding-left: 50px;
+  }
+
+  // Only hide the placeholder when there is an icon
+  &--icon#{&}--focus,
+  &--icon#{&}--value {
+    label {
+      opacity: 0 !important;
+    }
+  }
+
+  // This CSS must come after label to work
+  &--focus,
+  &--value {
+    .Icon {
+      svg path {
+        fill: colors.$purple;
+      }
+    }
+  }
+
+  // This CSS must come after label to work
+  &--focus:not(&--icon),
+  &--focus:not(&--search),
+  &--value:not(&--icon) {
+    label {
+      transform: translateY(-10px);
+      height: 12px;
+      font-size: 12px;
+      line-height: 12px;
+    }
+  }
+
+  &--textarea#{&}--value,
+  &--textarea#{&}--focus {
+    label {
+      transform: translateY(0px);
+      opacity: 0;
+    }
+  }
+
+  &--icon {
+    input {
+      padding: 20px 20px 20px var(--padding-left, 20px);
+    }
+  }
+
+  &--textarea {
+    label {
+      top: 20px;
+    }
+
+    textarea {
+      padding: 20px;
+    }
+  }
+
+  // Search mode
+  &--search {
+    background: transparent;
+    border-width: 0 0 4px 0;
+
+    input,
+    textarea {
+      color: colors.$white;
+      padding: 20px 0px;
+      line-height: 20px;
+      font-size: var(--search-font-size);
+      font-weight: bold;
+    }
+
+    label {
+      color: rgba(colors.$white, 0.5);
+      left: 0;
+      transform: translateY(0) !important;
+      font-size: var(--search-font-size) !important;
+      font-weight: bold;
+      line-height: 20px !important;
+    }
+  }
+
+  // Hide the placeholder for search only when there is a value
+  &--search#{&}--value {
+    label {
+      opacity: 0 !important;
+      transform: translateY(0);
+    }
+  }
+
+  // Hide the placeholder for search only when there is a value
+  &--search#{&}--focus {
+    label {
+      transform: translateY(0);
+      opacity: 0.5;
+    }
+  }
+
+  &--primary#{&}--icon {
+    label {
+      transform: translateY(0);
+      font-size: 16px !important;
+      line-height: 20px !important;
+    }
+  }
+
+  &--primary#{&}--icon#{&}--focus {
+    label {
+      opacity: 0.5 !important;
+    }
+  }
+
+  &--primary#{&}--icon#{&}--value {
+    label {
+      opacity: 0 !important;
+    }
+  }
+}

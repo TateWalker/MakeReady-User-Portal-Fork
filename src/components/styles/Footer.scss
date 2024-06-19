@@ -1,0 +1,76 @@
+@use "colors";
+
+.Footer {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  align-items: flex-start;
+  align-self: stretch;
+  background: colors.$black;
+  padding: 50px 40px;
+
+  &__Content {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 40px;
+    flex: 1;
+  }
+
+  &__Tagline {
+    color: colors.$white;
+    font-size: 18px;
+    line-height: 40px;
+  }
+
+  &:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 10px;
+    background: colors.$purple;
+  }
+
+  &__Logo {
+    display: flex;
+    cursor: pointer;
+    svg path {
+      fill: colors.$white;
+      transition: all 0.2s ease;
+    }
+
+    &:hover {
+      svg path {
+        fill: colors.$purple;
+      }
+    }
+  }
+
+  &__Social {
+    display: flex;
+    flex-direction: row;
+    gap: 0px;
+
+    &__Link {
+      cursor: pointer;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 40px;
+      flex: 0 0 40px;
+
+      svg path {
+        fill: colors.$white;
+        transition: all 0.2s ease;
+      }
+
+      &:hover {
+        svg path {
+          fill: colors.$purple;
+        }
+      }
+    }
+  }
+}
